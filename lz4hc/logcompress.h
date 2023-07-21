@@ -8,7 +8,7 @@
 #include "lz4hc.h"
 
 
-extern _Bool init();
+extern _Bool init(uint32_t size);
 
 /*
 * @brief compress log
