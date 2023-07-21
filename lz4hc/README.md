@@ -11,6 +11,8 @@ step3: 调用LogCompress(unsigned char* src,int srclen);第一个参数为要压
 
 step4: 在程序执行完毕后，调用release();压缩内存中残留的不足50kb的日志并写入文件。
 
+编译命令: gcc xxx.c logcompress.c lz4hc.c lz4.c -o xxx
+
 ### how to decompress
 使用可执行文件decompress,命令：./decompress 压缩后的日志名。
 
