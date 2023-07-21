@@ -1,7 +1,5 @@
 #include "logcompress.h"
 
-/*compress_size is from PRE_COMPRESS_SIZE to PRE_COMPRESS_SIZE+1024*/
-#define PRE_COMPRESS_SIZE 50*1024;
 
 static uint32_t count =0;
 
@@ -20,8 +18,8 @@ typedef struct compress_worker_t{
 
 static compress_worker_t* compress_worker;
 
-//init :create file
-_Bool init(){
+//init :set the size to compress for each time
+_Bool init(uint32_t size){
 
     time_t timep;
     struct tm *t;
@@ -42,7 +40,7 @@ _Bool init(){
         return 0;
     }
 
-    compress_worker->total_size = PRE_COMPRESS_SIZE +1024;
+    compress_worker->total_size = size +1024;
     compress_worker->begin_ptr = (unsigned char*)malloc(compress_worker->total_size);
     memset(compress_worker->begin_ptr,0x00,compress_worker->total_size);
     compress_worker->work_ptr = compress_worker->begin_ptr;
